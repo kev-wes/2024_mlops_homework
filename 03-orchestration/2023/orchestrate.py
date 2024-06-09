@@ -118,7 +118,7 @@ def main_flow(
     """The main training pipeline"""
     print(f"Current working directory: {os.getcwd()}")
     # MLflow settings
-    mlflow.set_tracking_uri("sqlite:///mlflow.db")
+    mlflow.set_tracking_uri("sqlite:///home/pxmopsadmin/2024_mlops_homework/03-orchestration/2023/mlflow.db")
     mlflow.set_experiment("nyc-taxi-experiment")
 
     # Load
