@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import scipy
 import sklearn
+import os
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.metrics import mean_squared_error
 import mlflow
@@ -115,7 +116,7 @@ def main_flow(
     val_path: str = "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2021-02.parquet",
 ) -> None:
     """The main training pipeline"""
-
+    print(f"Current working directory: {os.getcwd()}")
     # MLflow settings
     mlflow.set_tracking_uri("sqlite:///mlflow.db")
     mlflow.set_experiment("nyc-taxi-experiment")
