@@ -113,10 +113,10 @@ def train_best_model(
 @flow
 def main_flow(
     taxi_type: str = "green",
-    train_year: int = "2021",
-    train_month: int = "01",
-    val_year: int = "2021",
-    val_month: int = "02",
+    train_year: int = 2021,
+    train_month: int = 1,
+    val_year: int = 2021,
+    val_month: int = 2,
 ) -> None:
     """The main training pipeline"""
     train_path = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{train_year:04d}-{train_month:02d}.parquet",
