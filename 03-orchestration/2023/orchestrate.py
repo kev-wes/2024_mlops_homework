@@ -119,8 +119,8 @@ def main_flow(
     val_month: int = 2,
 ) -> None:
     """The main training pipeline"""
-    train_path = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{train_year:04d}-{train_month:02d}.parquet",
-    val_path: str = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{val_year:04d}-{val_month:02d}.parquet",
+    train_path = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{train_year:04d}-{train_month:02d}.parquet"
+    val_path = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{val_year:04d}-{val_month:02d}.parquet"
     # MLflow settings
     mlflow.set_tracking_uri("http://localhost:5000")
     mlflow.set_experiment("nyc-taxi-experiment")
