@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import scipy
 import sklearn
-import os
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.metrics import mean_squared_error
 import mlflow
@@ -12,7 +11,21 @@ import xgboost as xgb
 from prefect import flow, task
 from prefect.artifacts import create_markdown_artifact
 from datetime import date
+from prefect_email import EmailServerCredentials
+from prefect_email import email_send_message
 
+@task
+def send_notification(subject, msg, email_to, email_from):
+    # Load the credentials block
+    email_credentials_block = EmailServerCredentials.load("gmail")
+    
+    email_send_message(
+        email_server_credentials=email_credentials_block,
+        subject=subject,
+        msg=msg,
+        email_to=email_to,
+        email_from=email_from
+    )
 
 @task(retries=3, retry_delay_seconds=2)
 def read_data(filename: str) -> pd.DataFrame:
@@ -127,7 +140,11 @@ def train_best_model(
             key="duration-model-report", markdown=markdown_rmse_report
         )
 
+        send_notification("Run successful", f"Another flow finished successfully with RMSE = {rmse:.2f}",
+                          "kevin.wesendrup@uni-muenster.de", "noreply@mlops.com")
+
     return None
+
 
 
 @flow
