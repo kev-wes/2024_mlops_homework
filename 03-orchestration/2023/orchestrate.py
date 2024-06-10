@@ -112,11 +112,15 @@ def train_best_model(
 
 @flow
 def main_flow(
-    train_path: str = "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2021-01.parquet",
-    val_path: str = "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2021-02.parquet",
+    taxi_type: str = "green",
+    train_year: int = "2021",
+    train_month: int = "01",
+    val_year: int = "2021",
+    val_month: int = "02",
 ) -> None:
     """The main training pipeline"""
-    print(f"Current working directory: {os.getcwd()}")
+    train_path = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{train_year:04d}-{train_month:02d}.parquet",
+    val_path: str = f"https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{val_year:04d}-{val_month:02d}.parquet",
     # MLflow settings
     mlflow.set_tracking_uri("http://localhost:5000")
     mlflow.set_experiment("nyc-taxi-experiment")

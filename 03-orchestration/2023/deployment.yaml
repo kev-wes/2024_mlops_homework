@@ -1,0 +1,5 @@
+deployments:
+- name: taxi_web_data
+  entrypoint: orchestrate.py:main_flow
+  work_pool: 
+    name: zoompool
