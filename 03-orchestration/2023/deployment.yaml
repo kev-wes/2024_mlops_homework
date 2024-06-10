@@ -1,5 +1,5 @@
 deployments:
 - name: taxi_web_data
-  entrypoint: orchestrate.py:main_flow
+  entrypoint: 03-orchestration/2023/orchestrate.py:main_flow
   work_pool: 
     name: zoompool
