@@ -9,7 +9,7 @@ COPY [ "Pipfile", "Pipfile.lock", "./" ]
 
 RUN pipenv install --system --deploy
 
-COPY [ "refactor_batch_q4.py", "refactor_batch_q4.py" ]
+COPY [ "refactor_batch_q6.py", "refactor_batch_q6.py" ]
 COPY [ "model.bin", "model.bin" ]
 
-ENTRYPOINT [ "python", "refactor_batch_q4.py" ]
+ENTRYPOINT [ "python", "refactor_batch_q6.py" ]

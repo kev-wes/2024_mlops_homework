@@ -31,6 +31,10 @@ def main(year, month):
         index=False,
         storage_options=options
     )
+    os.chdir('../')
+    os.system('python refactor_batch_q6.py 2023 1')
+
+
 
 if __name__ == "__main__":
     year = int(sys.argv[1])

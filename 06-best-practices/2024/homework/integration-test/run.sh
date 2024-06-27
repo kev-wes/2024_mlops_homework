@@ -21,26 +21,16 @@ sleep 5
 
 aws --endpoint-url=http://localhost:4566 s3 mb s3://nyc-duration
 
-#pipenv run python test_docker.py
-
-# ERROR_CODE=$?
-
-# if [ ${ERROR_CODE} != 0 ]; then
-#     docker-compose logs
-#     docker-compose down
-#     exit ${ERROR_CODE}
-# fi
-
-
 pipenv run python integration_test.py 2023 1
 
-# ERROR_CODE=$?
+ERROR_CODE=$?
 
-# if [ ${ERROR_CODE} != 0 ]; then
-#     docker-compose logs
-#     docker-compose down
-#     exit ${ERROR_CODE}
-# fi
+if [ ${ERROR_CODE} != 0 ]; then
+    docker-compose logs
+    docker-compose down
+    exit ${ERROR_CODE}
+fi
 
+sleep 5
 
-# docker-compose down
+docker-compose down
