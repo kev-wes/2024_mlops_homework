@@ -1,0 +1,15 @@
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      - SERVICES=s3
+      - INPUT_FILE_PATTERN=${INPUT_FILE_PATTERN}
+      - OUTPUT_FILE_PATTERN=${OUTPUT_FILE_PATTERN}
+      - DEFAULT_REGION=eu-west-1
+      - AWS_ACCESS_KEY_ID=abc
+      - AWS_SECRET_ACCESS_KEY=xyz
+      - S3_ENDPOINT_URL=http://localhost:4566
+    volumes:
+      - "../model:/app/model"
